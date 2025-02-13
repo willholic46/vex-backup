@@ -12,9 +12,9 @@ export class AppController {
     return{servidores: this.service.getAll()};
   }
 
-  @Get('/cadastro/servidor')
-  @Render('teste')
-  cadastro_servidor() {
+  @Get('/cadastrar_usuario')
+  @Render('cadastrar_usuarios')
+  cadastrar_usuario() {
     return{}
   }
 
