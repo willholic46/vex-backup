@@ -6,14 +6,67 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Modernize Free</title>
   <link rel="shortcut icon" type="image/png" href="/images/logos/favicon.png" />
-  {{!-- <link rel="stylesheet" href="/css/styles.min.css" /> --}}
+  {{!--
+  <link rel="stylesheet" href="/css/styles.min.css" /> --}}
   <link rel="stylesheet" href="/css/home.css" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+    rel="stylesheet">
 </head>
+
+<header>
+  <div class="nav">
+    <div class='nav_header'>
+      <img src="images/icon_logo.svg" alt="">
+    </div>
+
+    <div class='nav_body'>
+      <div class='botton_dashboard'>
+        <div class='img_botton_dashboard'>
+          <img src="images/icon_dashboard.svg" alt="Ícone de dashboards">
+        </div>
+
+        <p>Dashboard</p>
+      </div>
+
+      <div class='botton_backups'>
+        <div class='img_botton_backup'>
+          <img src="images/icon_backups.svg" alt="Ícone de backups">
+        </div>
+
+        <p>Backups</p>
+      </div>
+
+      <div class='botton_usuarios'>
+        <div class='side_botton_usuarios'>
+          <p></p>
+        </div>
+
+        <div class='img_botton_usuarios'>
+          <img src="images/botton_usuarios.svg" alt="Ícone de usuários">
+        </div>
+
+        <p>Usuários</p>
+      </div>
+    </div>
+
+    <div class="nav_footer">
+      <div class='nav_bottomn'>
+        <img src="images/icon_sair.svg" alt="Ícone de sair">
+
+        <p>Sair</p>
+      </div>
+    </div>
+  </div>
+</header>
 
 <body>
 
   {{> content}}
-  
+
   <script src="/libs/jquery/dist/jquery.min.js"></script>
   <script src="/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
   <script src="/js/sidebarmenu.js"></script>
@@ -23,4 +76,5 @@
   <script src="/js/dashboard.js"></script>
 
 </body>
+
 </html>

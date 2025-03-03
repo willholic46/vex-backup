@@ -3,19 +3,18 @@ import { ServidorService } from './app.service';
 
 @Controller()
 export class AppController {
-
-  constructor (private readonly service: ServidorService) {}
+  constructor(private readonly service: ServidorService) {}
 
   @Get('/')
   @Render('home')
   home() {
-    return{servidores: this.service.getAll()};
+    return { servidores: this.service.getAll() };
   }
 
   @Get('/cadastrar_usuario')
-  @Render('cadastrar_usuarios')
+  @Render('cadastrar_usuarios/cd_usuario')
   cadastrar_usuario() {
-    return{}
+    return {};
   }
 
   @Get('/about')

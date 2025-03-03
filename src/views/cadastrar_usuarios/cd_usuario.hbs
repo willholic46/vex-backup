@@ -1,0 +1,192 @@
+{{#> main}}
+{{#*inline "content"}}
+
+<style>
+  .geral {
+    width: 100%;
+  }
+
+  .area_form {
+    background-color: #F6F8FA;
+    width: 800px;
+    height: 650px;
+    overflow: hidden;
+  }
+
+  .cabecalho_area_form {
+    margin-top: 60px;
+    margin-left: 30px;
+  }
+
+  .area_inputs_geral {
+    height: 320px;
+
+    margin-left: 30px;
+    margin-right: 30px;
+
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+
+  .area_inputs {
+    width: 50%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .area_inputs p {
+    color: #2C2D2F;
+    margin: 0 0 5px 0;
+    font-size: 19px;
+  }
+
+  .area_inputs input {
+    border-radius: 8px;
+    border: 1px #FFFFFF solid;
+    width: 300px;
+    height: 30px;
+  }
+
+  .msg {
+    width: 100%;
+
+    margin-top: 20px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .msg p {
+    font-size: 22px;
+    color: #375D54;
+  }
+
+  .area_line {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .line {
+    width: 680px;
+    border-bottom: solid 1px #6F7382;
+  }
+
+  .area_buttons {
+    width: 100%;
+    height: 100px;
+
+    margin-top: 10px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .cancel button {
+    border-radius: 8px;
+    width: 160px;
+    height: 50px;
+
+    font-size: 15px;
+    margin-right: 100px;
+  }
+
+  .save button {
+    border-radius: 8px;
+    width: 160px;
+    height: 50px;
+    font-size: 15px;
+
+    background-color: #2C2D2F;
+    color: #FFFFFF;
+  }
+</style>
+
+<div class="body">
+
+  <div class="cabecalho">
+    <h1>Cadastro</h1>
+    <span>Adicione um novo usuário ao sistema</span>
+  </div>
+
+
+  <div class="area_form">
+    <div class="cabecalho_area_form">
+      <h2>Cadastrar um novo usuário</h2>
+    </div>
+
+    <div class="area_inputs_geral">
+
+      <div class="area_inputs">
+        <div class="input_content">
+          <p>Nome do usuário</p>
+          <input type="text">
+        </div>
+      </div>
+
+      <div class="area_inputs">
+        <div class="input_content">
+          <p>Login</p>
+          <input type="text">
+        </div>
+      </div>
+
+      <div class="area_inputs">
+        <div class="input_content">
+          <p>Senha</p>
+          <input type="text">
+        </div>
+      </div>
+
+      <div class="area_inputs">
+        <div class="input_content">
+          <p>Repetir senha</p>
+          <input type="text">
+        </div>
+      </div>
+
+      <div class="area_inputs">
+        <div class="input_content">
+          <p>Permissão de acesso</p>
+          <input type="text">
+        </div>
+      </div>
+
+      <div class="area_inputs">
+        <div class="input_content">
+          <p>Data de cadastro</p>
+          <input type="text">
+        </div>
+      </div>
+
+    </div>
+
+    <div class="msg">
+      <p>A data de cadastro será atribuída automaticamente pela sistema. </p>
+    </div>
+
+    <div class="area_line">
+      <div class="line"></div>
+    </div>
+
+    <div class="area_buttons">
+      <div class="cancel">
+        <button>Cancelar</button>
+      </div>
+
+      <div class="save">
+        <button>Salvar</button>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+{{/inline}}
+{{/main}}

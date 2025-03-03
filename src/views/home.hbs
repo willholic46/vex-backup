@@ -1,59 +1,10 @@
 {{#> main}}
 {{#*inline "content"}}
-<!--  Row 1 -->
-<header>
-  <div class="nav">
-    <div class='nav_header'>
-      <img src="imagesM/icon_logo.svg" alt="">
-    </div>
-
-    <div class='nav_body'>
-      <div class='botton_dashboard'>
-        <div class='img_botton_dashboard'>
-          <img src="imagesM/icon_dashboard.svg" alt="Ícone de dashboards">
-        </div>
-
-        <p>Dashboard</p>
-      </div>
-
-      <div class='botton_backups'>
-        <div class='img_botton_backup'>
-          <img src="imagesM/icon_backups.svg" alt="Ícone de backups">
-        </div>
-
-        <p>Backups</p>
-      </div>
-
-      <div class='botton_usuarios'>
-        <div class='side_botton_usuarios'>
-          <p></p>
-        </div>
-
-        <div class='img_botton_usuarios'>
-          <img src="imagesM/botton_usuarios.svg" alt="Ícone de usuários">
-        </div>
-
-        <p>Usuários</p>
-      </div>
-    </div>
-
-    <div class="nav_footer">
-      <div class='nav_bottomn'>
-        <img src="imagesM/icon_sair.svg" alt="Ícone de sair">
-
-        <p>Sair</p>
-      </div>
-    </div>
-  </div>
-</header>
 
 <div class="body">
-  <div class='title'>
+  <div class="cabecalho">
     <h1>Usuários</h1>
-  </div>
-
-  <div class="sub_title">
-    <p>Crie, gerencie e altere as credenciais de acesso ao sistema.</p>
+    <span>Crie, gerencie e altere as credenciais de acesso ao sistema.</span>
   </div>
 
   <div class="container_table">
@@ -66,7 +17,7 @@
       </div>
 
       <div class="label_search">
-        <img src="imagesM/icon_search.svg" alt="icon_search">
+        <img src="images/icon_search.svg" alt="icon_search">
 
         <input type="text" id="filter" placeholder="Buscar...">
       </div>
@@ -74,7 +25,6 @@
       <a href="/cadastrar_usuario" class="botomn_register">
         <button class="botomn_register">Cadastrar</button>
       </a>
-      
     </div>
 
     <div class="area_listing_table">
@@ -92,13 +42,13 @@
 
           {{#each servidores}}
 
-            <tr>
-              <td>{{this.usuario}}</td>
-              <td>{{this.privilegio}}</td>
-              <td>{{this.ultimo_acesso}}</td>
-              <td>{{this.data_cadastro}}</td>
-            </tr>
-          
+          <tr>
+            <td>{{this.usuario}}</td>
+            <td>{{this.privilegio}}</td>
+            <td>{{this.ultimo_acesso}}</td>
+            <td>{{this.data_cadastro}}</td>
+          </tr>
+
           {{/each}}
         </tbody>
       </table>
