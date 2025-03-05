@@ -1,0 +1,315 @@
+{{#> main}}
+{{#*inline "content"}}
+
+<div class="page-container">
+  <div class="page-header">
+    <h1>Detalhes do Backup</h1>
+    <p class="page-description">Inspecione os detalhes do backup e upload relacionado</p>
+  </div>
+
+  {{#if error}}
+  <div class="error-message">
+    <p>{{error}}</p>
+    <a href="/upload-s3-log" class="btn btn-secondary">Voltar</a>
+  </div>
+  {{else}}
+  <div class="details-container">
+    <div class="section-header">
+      <h2>Backup</h2>
+      <div class="section-divider"></div>
+    </div>
+
+    <div class="details-grid">
+      <div class="details-column">
+        <div class="detail-row">
+          <div class="detail-label">Hostname</div>
+          <div class="detail-value">{{backup.hostname}}</div>
+        </div>
+        <div class="detail-row">
+          <div class="detail-label">Banco de dados</div>
+          <div class="detail-value">{{backup.banco_dados}}</div>
+        </div>
+        <div class="detail-row">
+          <div class="detail-label">Tamanho</div>
+          <div class="detail-value">{{backup.tamanho}} GB</div>
+        </div>
+        <div class="detail-row">
+          <div class="detail-label">Data e hora de início</div>
+          <div class="detail-value">{{backup.data_inicio}}</div>
+        </div>
+        <div class="detail-row">
+          <div class="detail-label">Data e hora de conclusão</div>
+          <div class="detail-value">{{backup.data_encerramento}}</div>
+        </div>
+        <div class="detail-row">
+          <div class="detail-label">Duração</div>
+          <div class="detail-value">{{backup.duracao}}</div>
+        </div>
+        <div class="detail-row">
+          <div class="detail-label">Status Backup</div>
+          <div class="detail-value">
+            <span
+              class="status-badge {{#ifCond backup.status '==' 1}}badge-sucesso{{else}}{{#ifCond backup.status '==' 3}}badge-erro{{else}}badge-aviso{{/ifCond}}{{/ifCond}}">
+              {{backup.status_texto}}
+            </span>
+          </div>
+        </div>
+      </div>
+
+      {{#if upload}}
+      <div class="details-column">
+        <div class="detail-row">
+          <div class="detail-label">Arquivo</div>
+          <div class="detail-value">{{upload.arquivo}}</div>
+        </div>
+        <div class="detail-row">
+          <div class="detail-label">Tamanho do arquivo</div>
+          <div class="detail-value">{{upload.tamanho}} MB</div>
+        </div>
+        <div class="detail-row">
+          <div class="detail-label">Caminho do arquivo</div>
+          <div class="detail-value">{{upload.caminho}}</div>
+        </div>
+        <div class="detail-row">
+          <div class="detail-label">Bucket</div>
+          <div class="detail-value">{{upload.bucket}}</div>
+        </div>
+        <div class="detail-row">
+          <div class="detail-label">Data e hora de início</div>
+          <div class="detail-value">{{upload.data_inicio}}</div>
+        </div>
+        <div class="detail-row">
+          <div class="detail-label">Data e hora de conclusão</div>
+          <div class="detail-value">{{upload.data_encerramento}}</div>
+        </div>
+        <div class="detail-row">
+          <div class="detail-label">Duração</div>
+          <div class="detail-value">{{upload.duracao}}</div>
+        </div>
+        <div class="detail-row">
+          <div class="detail-label">Status Upload</div>
+          <div class="detail-value">
+            <span
+              class="status-badge {{#ifCond upload.status '==' 1}}badge-sucesso{{else}}{{#ifCond upload.status '==' 3}}badge-erro{{else}}badge-aviso{{/ifCond}}{{/ifCond}}">
+              {{upload.status_texto}}
+            </span>
+          </div>
+        </div>
+      </div>
+      {{/if}}
+    </div>
+
+    <div class="errors-section">
+      <div class="error-column">
+        <h3>Erros no backup</h3>
+        <div class="error-content">
+          {{#if backup.observacao}}
+          <div class="error-message">{{backup.observacao}}</div>
+          {{else}}
+          <div class="no-error">Nenhum erro registrado.</div>
+          {{/if}}
+        </div>
+      </div>
+
+      {{#if upload}}
+      <div class="error-column">
+        <h3>Erros no upload</h3>
+        <div class="error-content">
+          <div class="no-error">Nenhum erro registrado.</div>
+        </div>
+      </div>
+      {{/if}}
+    </div>
+
+    <div class="actions-container">
+      <a href="/upload-s3-log" class="btn btn-secondary">Voltar</a>
+    </div>
+  </div>
+  {{/if}}
+</div>
+
+<style>
+  .page-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  .page-header {
+    margin-bottom: 30px;
+  }
+
+  .page-header h1 {
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: var(--text-color);
+  }
+
+  .page-description {
+    color: var(--dark-gray);
+    font-size: 14px;
+  }
+
+  .details-container {
+    background-color: white;
+    border-radius: var(--border-radius);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    padding: 30px;
+    margin-bottom: 30px;
+  }
+
+  .section-header {
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+
+  .section-header h2 {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 5px;
+    color: var(--text-color);
+  }
+
+  .section-divider {
+    height: 1px;
+    background-color: var(--medium-gray);
+    margin-bottom: 15px;
+  }
+
+  .details-grid {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 30px;
+    gap: 30px;
+  }
+
+  .details-column {
+    flex: 1;
+    min-width: 300px;
+  }
+
+  .detail-row {
+    display: flex;
+    margin-bottom: 15px;
+    border-bottom: 1px solid var(--light-gray);
+    padding-bottom: 8px;
+  }
+
+  .detail-label {
+    width: 180px;
+    font-weight: 500;
+    color: var(--dark-gray);
+  }
+
+  .detail-value {
+    flex-grow: 1;
+    font-weight: 500;
+    color: var(--text-color);
+  }
+
+  .status-badge {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 4px;
+    font-weight: 500;
+    text-align: center;
+    min-width: 80px;
+  }
+
+  .badge-sucesso {
+    background-color: rgba(40, 167, 69, 0.15);
+    color: var(--success-color);
+  }
+
+  .badge-aviso {
+    background-color: rgba(255, 193, 7, 0.15);
+    color: var(--warning-color);
+  }
+
+  .badge-erro {
+    background-color: rgba(220, 53, 69, 0.15);
+    color: var(--danger-color);
+  }
+
+  .errors-section {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 30px;
+    gap: 30px;
+  }
+
+  .error-column {
+    flex: 1;
+    min-width: 300px;
+  }
+
+  .error-column h3 {
+    font-size: 16px;
+    margin-bottom: 10px;
+    color: var(--text-color);
+  }
+
+  .error-content {
+    background-color: var(--light-gray);
+    padding: 15px;
+    border-radius: 4px;
+    min-height: 80px;
+  }
+
+  .error-message {
+    color: var(--danger-color);
+    font-family: monospace;
+    white-space: pre-wrap;
+    word-break: break-all;
+  }
+
+  .no-error {
+    color: #999;
+    font-style: italic;
+  }
+
+  .actions-container {
+    display: flex;
+    justify-content: flex-start;
+    margin-top: 30px;
+  }
+
+  .btn {
+    display: inline-block;
+    padding: 8px 16px;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s;
+  }
+
+  .btn-secondary {
+    background-color: #6c757d;
+    color: white;
+    border: none;
+  }
+
+  .btn-secondary:hover {
+    background-color: #5a6268;
+  }
+
+  .error-message {
+    text-align: center;
+    margin: 30px 0;
+    padding: 20px;
+    background-color: rgba(220, 53, 69, 0.05);
+    border-radius: var(--border-radius);
+    border: 1px solid rgba(220, 53, 69, 0.2);
+  }
+
+  .error-message p {
+    color: var(--danger-color);
+    font-size: 16px;
+    margin-bottom: 20px;
+  }
+</style>
+
+{{/inline}}
+{{/main}}

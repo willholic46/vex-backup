@@ -1,0 +1,257 @@
+{{#> main}}
+{{#*inline "content"}}
+
+<div class="page-container">
+  <div class="page-header">
+    <h1>Uploads S3</h1>
+    <p class="page-description">Visualize e gerencie os registros de backups enviados para o Amazon S3.</p>
+  </div>
+
+  <div class="content-card">
+    <div class="card-header">
+      <div class="count-records">
+        <span class="count-label">Todos</span>
+        <span class="count-number" id="recordCount">{{logs.length}}</span>
+      </div>
+
+      <div class="search-container">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path
+            d="M11 19C15.4183 19 19 15.4183 19 11C19 6.58172 15.4183 3 11 3C6.58172 3 3 6.58172 3 11C3 15.4183 6.58172 19 11 19Z"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+          <path d="M21 21L16.65 16.65" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+            stroke-linejoin="round" />
+        </svg>
+        <input type="text" id="filter" placeholder="Pesquisar...">
+      </div>
+
+      <div class="card-actions">
+        <a href="/upload-s3-log/create" class="btn btn-primary">Registrar Upload</a>
+      </div>
+    </div>
+
+    <div class="table-responsive">
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th width="50">#</th>
+            <th>Hostname</th>
+            <th>Status</th>
+            <th>Tamanho</th>
+            <th>Data de início</th>
+            <th>Data de encerramento</th>
+            <th>Status upload</th>
+            <th width="80">Ações</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#each logs}}
+          <tr>
+            <td>{{this.id}}</td>
+            <td>{{this.hostname}}</td>
+            <td>
+              <span
+                class="status-badge {{#ifCond this.status_backup '==' 1}}badge-sucesso{{else}}{{#ifCond this.status_backup '==' 3}}badge-erro{{else}}badge-aviso{{/ifCond}}{{/ifCond}}">
+                {{this.status_backup_texto}}
+              </span>
+            </td>
+            <td>{{this.tamanho_arquivo}} MB</td>
+            <td>{{this.data_inicio}}</td>
+            <td>{{this.data_encerramento}}</td>
+            <td>
+              <span
+                class="status-badge {{#ifCond this.status_upload '==' 1}}badge-sucesso{{else}}{{#ifCond this.status_upload '==' 3}}badge-erro{{else}}badge-aviso{{/ifCond}}{{/ifCond}}">
+                {{this.status_upload_texto}}
+              </span>
+            </td>
+            <td>
+              <a href="/upload-s3-log/backup/{{this.id_backup}}" class="action-link">
+                <svg width="8" height="13" viewBox="0 0 8 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path
+                    d="M-3.91006e-05 1.09L1.06096 0.0300007L6.83996 5.807C6.93312 5.89957 7.00704 6.00964 7.05749 6.13089C7.10794 6.25214 7.13391 6.38217 7.13391 6.5135C7.13391 6.64483 7.10794 6.77486 7.05749 6.89611C7.00704 7.01736 6.93312 7.12743 6.83996 7.22L1.06096 13L0.000960827 11.94L5.42496 6.515L-3.91006e-05 1.09Z"
+                    fill="#2C2D2F" />
+                </svg>
+
+              </a>
+            </td>
+          </tr>
+          {{/each}}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<style>
+  .content-card {
+    background-color: white;
+    border-radius: var(--border-radius);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    margin-bottom: 30px;
+  }
+
+  .card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px 20px;
+    border-bottom: 1px solid var(--light-gray);
+  }
+
+  .count-records {
+    display: flex;
+    align-items: center;
+  }
+
+  .count-label {
+    font-weight: 500;
+    color: var(--dark-gray);
+    margin-right: 8px;
+  }
+
+  .count-number {
+    background-color: var(--light-gray);
+    color: var(--dark-gray);
+    padding: 2px 8px;
+    border-radius: 12px;
+    font-size: 14px;
+    font-weight: 500;
+  }
+
+  .search-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+
+  .search-container svg {
+    position: absolute;
+    left: 10px;
+    color: var(--dark-gray);
+  }
+
+  .search-container input {
+    padding: 8px 10px 8px 35px;
+    border: 1px solid var(--medium-gray);
+    border-radius: var(--border-radius);
+    font-size: 14px;
+    width: 250px;
+  }
+
+  .search-container input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+  }
+
+  .btn-primary {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 8px;
+    border-radius: 4px;
+    text-decoration: none;
+  }
+
+  .btn-primary:hover {
+    background-color: #333;
+  }
+
+  .table-responsive {
+    overflow-x: auto;
+  }
+
+  .data-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  .data-table thead tr {
+    background-color: var(--light-gray);
+  }
+
+  .data-table th {
+    padding: 12px 15px;
+    text-align: left;
+    font-weight: 600;
+    color: var(--dark-gray);
+    border-bottom: 1px solid var(--medium-gray);
+  }
+
+  .data-table td {
+    padding: 12px 15px;
+    border-bottom: 1px solid var(--light-gray);
+  }
+
+  .data-table tbody tr:hover {
+    background-color: rgba(0, 0, 0, 0.02);
+  }
+
+  .status-badge {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 4px;
+    font-weight: 500;
+    text-align: center;
+    font-size: 12px;
+  }
+
+  .badge-sucesso {
+    background-color: rgba(40, 167, 69, 0.15);
+    color: var(--success-color);
+  }
+
+  .badge-aviso {
+    background-color: rgba(255, 193, 7, 0.15);
+    color: var(--warning-color);
+  }
+
+  .badge-erro {
+    background-color: rgba(220, 53, 69, 0.15);
+    color: var(--danger-color);
+  }
+
+  .action-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 6px;
+    border-radius: 4px;
+    background-color: var(--light-gray);
+    color: var(--dark-gray);
+    text-decoration: none;
+    transition: all 0.2s;
+  }
+
+  .action-link:hover {
+    background-color: var(--medium-gray);
+    color: var(--primary-color);
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const filterInput = document.getElementById('filter');
+    const tableRows = document.querySelectorAll('.data-table tbody tr');
+    const recordCount = document.getElementById('recordCount');
+
+    filterInput.addEventListener('keyup', function () {
+      const searchTerm = filterInput.value.toLowerCase();
+      let visibleRows = 0;
+
+      tableRows.forEach(row => {
+        const rowText = row.textContent.toLowerCase();
+        if (rowText.includes(searchTerm)) {
+          row.style.display = '';
+          visibleRows++;
+        } else {
+          row.style.display = 'none';
+        }
+      });
+
+      recordCount.textContent = visibleRows;
+    });
+  });
+</script>
+
+{{/inline}}
+{{/main}}
