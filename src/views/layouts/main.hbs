@@ -1,10 +1,10 @@
 <!doctype html>
-<html lang="en">
+<html lang="pt-br">
 
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Modernize Free</title>
+  <title>Sistema de Backup</title>
   <link rel="shortcut icon" type="image/png" href="/images/logos/favicon.png" />
   {{!--
   <link rel="stylesheet" href="/css/styles.min.css" /> --}}
@@ -17,83 +17,80 @@
     rel="stylesheet">
 </head>
 
-<header>
-  <div class="nav">
-    <div class='nav_header'>
-      <img src="images/icon_logo.svg" alt="">
-    </div>
-
-    <div class='nav_body'>
-      <div class='botton_dashboard' onclick="window.location.href='/dashboard'" style="cursor: pointer;">
-        <div class='img_botton_dashboard'>
-          <svg width="17" height="19" viewBox="0 0 17 19" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path
-              d="M1 6.83333L8.5 1L16 6.83333V16C16 16.442 15.8244 16.8659 15.5118 17.1785C15.1993 17.4911 14.7754 17.6667 14.3333 17.6667H2.66667C2.22464 17.6667 1.80072 17.4911 1.48816 17.1785C1.17559 16.8659 1 16.442 1 16V6.83333Z"
-              stroke="#202125" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" />
-            <path d="M6 17.6667V9.33333H11V17.6667" stroke="#202125" stroke-width="1.3" stroke-linecap="round"
-              stroke-linejoin="round" />
-          </svg>
-        </div>
-
-        <p>Dashboard</p>
-      </div>
-
-      <div class='botton_backups' onclick="window.location.href='/backups'" style="cursor: pointer;">
-        <div class='img_botton_backup'>
-          <svg width="17" height="19" viewBox="0 0 17 19" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path
-              d="M8.5 6C12.6421 6 16 4.88071 16 3.5C16 2.11929 12.6421 1 8.5 1C4.35786 1 1 2.11929 1 3.5C1 4.88071 4.35786 6 8.5 6Z"
-              stroke="black" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" />
-            <path d="M16 10C16 11.1067 12.6667 12 8.5 12C4.33333 12 1 11.1067 1 10" stroke="black" stroke-width="1.3"
-              stroke-linecap="round" stroke-linejoin="round" />
-            <path d="M1 4V15.5294C1 16.8965 4.33333 18 8.5 18C12.6667 18 16 16.8965 16 15.5294V4" stroke="#202125"
-              stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" />
-          </svg>
-        </div>
-
-        <p>Backups</p>
-      </div>
-
-      <div class='botton_usuarios' onclick="window.location.href='/users'" style="cursor: pointer;">
-        <div class='side_botton_usuarios'>
-          <p></p>
-        </div>
-
-        <div class='img_botton_usuarios'>
-          <svg width="17" height="19" viewBox="0 0 17 19" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path
-              d="M8.5 6C12.6421 6 16 4.88071 16 3.5C16 2.11929 12.6421 1 8.5 1C4.35786 1 1 2.11929 1 3.5C1 4.88071 4.35786 6 8.5 6Z"
-              stroke="black" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" />
-            <path d="M16 10C16 11.1067 12.6667 12 8.5 12C4.33333 12 1 11.1067 1 10" stroke="black" stroke-width="1.3"
-              stroke-linecap="round" stroke-linejoin="round" />
-            <path d="M1 4V15.5294C1 16.8965 4.33333 18 8.5 18C12.6667 18 16 16.8965 16 15.5294V4" stroke="#202125"
-              stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" />
-          </svg>
-        </div>
-
-        <p>Usuários</p>
-      </div>
-    </div>
-
-    <div class="nav_footer">
-      <div class='nav_bottomn' style="cursor: pointer;">
-        <svg width="18" height="15" viewBox="0 0 18 15" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M7.5 14L1 7.5L7.5 1" stroke="black" stroke-width="1.3" stroke-linecap="round"
-            stroke-linejoin="round" />
-          <path d="M0.999976 7.5H16.6" stroke="black" stroke-width="1.3" stroke-linecap="round"
-            stroke-linejoin="round" />
+<body>
+  <aside class="sidebar">
+    <div class="sidebar-logo">
+      <div class="logo-container">
+        <svg width="50" height="42" viewBox="0 0 50 42" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M21.7778 4.66667L40.6379 32.6667H2.91767L21.7778 4.66667Z" fill="#202125" />
+          <rect x="43.5555" width="6.22222" height="32.6667" fill="#FF512F" />
         </svg>
 
-
-        <p>Sair</p>
       </div>
     </div>
-  </div>
-</header>
 
-<body>
+    <nav class="sidebar-menu">
+      <ul class="menu-items">
+        <li class="menu-item" data-page="dashboard">
+          <a href="/dashboard" class="menu-link">
+            <svg width="17" height="19" viewBox="0 0 17 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M1 6.83333L8.5 1L16 6.83333V16C16 16.442 15.8244 16.8659 15.5118 17.1785C15.1993 17.4911 14.7754 17.6667 14.3333 17.6667H2.66667C2.22464 17.6667 1.80072 17.4911 1.48816 17.1785C1.17559 16.8659 1 16.442 1 16V6.83333Z"
+                stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" />
+              <path d="M6 17.6667V9.33333H11V17.6667" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"
+                stroke-linejoin="round" />
+            </svg>
+            <span>Dashboard</span>
+          </a>
+        </li>
 
-  {{> content}}
+        <li class="menu-item" data-page="backups">
+          <a href="/backups" class="menu-link">
+            <svg width="17" height="19" viewBox="0 0 17 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M8.5 6C12.6421 6 16 4.88071 16 3.5C16 2.11929 12.6421 1 8.5 1C4.35786 1 1 2.11929 1 3.5C1 4.88071 4.35786 6 8.5 6Z"
+                stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" />
+              <path d="M16 10C16 11.1067 12.6667 12 8.5 12C4.33333 12 1 11.1067 1 10" stroke="currentColor"
+                stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" />
+              <path d="M1 4V15.5294C1 16.8965 4.33333 18 8.5 18C12.6667 18 16 16.8965 16 15.5294V4"
+                stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+            <span>Backups</span>
+          </a>
+        </li>
+
+        <li class="menu-item" data-page="users">
+          <a href="/users" class="menu-link">
+            <svg width="17" height="19" viewBox="0 0 17 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M16 18V16C16 14.9391 15.5786 13.9217 14.8284 13.1716C14.0783 12.4214 13.0609 12 12 12H5C3.93913 12 2.92172 12.4214 2.17157 13.1716C1.42143 13.9217 1 14.9391 1 16V18"
+                stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" />
+              <path
+                d="M8.5 8C10.7091 8 12.5 6.20914 12.5 4C12.5 1.79086 10.7091 0 8.5 0C6.29086 0 4.5 1.79086 4.5 4C4.5 6.20914 6.29086 8 8.5 8Z"
+                stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+            <span>Usuários</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+
+    <div class="sidebar-footer">
+      <a href="/logout" class="logout-button">
+        <svg width="18" height="15" viewBox="0 0 18 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M7.5 14L1 7.5L7.5 1" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"
+            stroke-linejoin="round" />
+          <path d="M0.999976 7.5H16.6" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"
+            stroke-linejoin="round" />
+        </svg>
+        <span>Sair</span>
+      </a>
+    </div>
+  </aside>
+
+  <main class="content">
+    {{> content}}
+  </main>
 
   <script src="/libs/jquery/dist/jquery.min.js"></script>
   <script src="/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
@@ -103,6 +100,22 @@
   <script src="/libs/simplebar/dist/simplebar.js"></script>
   <script src="/js/dashboard.js"></script>
 
+  <script>
+    // Destaca o item de menu ativo com base na URL atual
+    document.addEventListener('DOMContentLoaded', function () {
+      const currentPath = window.location.pathname;
+      const menuItems = document.querySelectorAll('.menu-item');
+
+      menuItems.forEach(item => {
+        const itemPage = item.getAttribute('data-page');
+        // Considera tanto match exato quanto prefixo do path
+        if (currentPath === '/' + itemPage ||
+          (itemPage !== 'dashboard' && currentPath.startsWith('/' + itemPage))) {
+          item.classList.add('active');
+        }
+      });
+    });
+  </script>
 </body>
 
 </html>
