@@ -31,22 +31,20 @@
       <table class="listing_table">
         <thead class="thead_listing_table">
           <tr>
-            <th>Usuário</th>
-            <th>Privilégio</th>
-            <th>Último acesso</th>
-            <th>Data de cadastro</th>
+            <th>Login</th>
+            <th>Senha</th>
+            <th>Data de criação</th>
           </tr>
         </thead>
 
         <tbody class="tbody_listing_table">
 
-          {{#each servidores}}
+          {{#each users}}
 
           <tr>
-            <td>{{this.usuario}}</td>
-            <td>{{this.privilegio}}</td>
-            <td>{{this.ultimo_acesso}}</td>
-            <td>{{this.data_cadastro}}</td>
+            <td>{{this.login}}</td>
+            <td>{{this.senha}}</td>
+            <td>{{this.data_criacao}}</td>
           </tr>
 
           {{/each}}

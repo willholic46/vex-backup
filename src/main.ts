@@ -4,6 +4,7 @@ import * as session from 'express-session';
 import * as hbs from 'hbs';
 import * as hbsUtils from 'hbs-utils';
 import * as passport from 'passport';
+import * as express from 'express';
 import { join } from 'path';
 import { AppModule } from './app.module';
 import { NotFoundExceptionFilter } from './common/filters/not-found-exception.filter';
@@ -34,6 +35,9 @@ async function bootstrap() {
   app.use(flash());
 
   app.use(flashErrors);
+
+  app.use('/public', express.static(join(__dirname, '..', 'public')));
+
   app.useGlobalFilters(new NotFoundExceptionFilter());
 
   await app.listen(3000);

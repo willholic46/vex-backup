@@ -28,9 +28,17 @@ export class UserController {
     return { title: 'Cadastrar Usuário' };
   }
 
-  @Post('create')
+  @Post('/create')
   async createUsuario(@Body() usuario, @Res() res: Response) {
-    await this.usersService.create(usuario);
-    return res.redirect('/users');
+    console.log(usuario);
+
+    await this.usersService
+      .create(usuario)
+      .then(() => {
+        return res.redirect('/users');
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }
 }

@@ -9,8 +9,8 @@
   .area_form {
     background-color: #F6F8FA;
     width: 800px;
-    height: 650px;
     overflow: hidden;
+    padding: 20px;
   }
 
   .cabecalho_area_form {
@@ -69,6 +69,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
   }
 
   .line {
@@ -78,7 +80,6 @@
 
   .area_buttons {
     width: 100%;
-    height: 100px;
 
     margin-top: 10px;
 
@@ -115,7 +116,7 @@
   </div>
 
 
-  <div class="area_form">
+  <form action="/users/create" method="POST" class="area_form">
     <div class="cabecalho_area_form">
       <h2>Cadastrar um novo usuário</h2>
     </div>
@@ -124,22 +125,15 @@
 
       <div class="area_inputs">
         <div class="input_content">
-          <p>Nome do usuário</p>
-          <input type="text">
-        </div>
-      </div>
-
-      <div class="area_inputs">
-        <div class="input_content">
           <p>Login</p>
-          <input type="text">
+          <input type="text" name="login" id="login">
         </div>
       </div>
 
       <div class="area_inputs">
         <div class="input_content">
           <p>Senha</p>
-          <input type="text">
+          <input type="text" name="senha" id="senha">
         </div>
       </div>
 
@@ -150,43 +144,32 @@
         </div>
       </div>
 
-      <div class="area_inputs">
+      {{!-- <div class="area_inputs">
         <div class="input_content">
           <p>Permissão de acesso</p>
-          <input type="text">
+          <select style="width: 300px; height: 30px; border-radius: 4px; border: 1px #FFFFFF solid;" name="privilegio"
+            id="privilegio">
+            <option value="Administrador">Administrador</option>
+            <option value="Usuario">Usuário</option>
+          </select>
+        </div>
+      </div> --}}
+
+      <div class="area_line">
+        <div class="line"></div>
+      </div>
+
+      <div class="area_buttons">
+        <div class="cancel">
+          <button type="button" onclick="window.location.href='/users'">Cancelar</button>
+        </div>
+
+        <div class="save">
+          <button type="submit">Salvar</button>
         </div>
       </div>
-
-      <div class="area_inputs">
-        <div class="input_content">
-          <p>Data de cadastro</p>
-          <input type="text">
-        </div>
-      </div>
-
     </div>
+  </form>
 
-    <div class="msg">
-      <p>A data de cadastro será atribuída automaticamente pela sistema. </p>
-    </div>
-
-    <div class="area_line">
-      <div class="line"></div>
-    </div>
-
-    <div class="area_buttons">
-      <div class="cancel">
-        <button>Cancelar</button>
-      </div>
-
-      <div class="save">
-        <button>Salvar</button>
-      </div>
-    </div>
-
-  </div>
-
-</div>
-
-{{/inline}}
-{{/main}}
+  {{/inline}}
+  {{/main}}

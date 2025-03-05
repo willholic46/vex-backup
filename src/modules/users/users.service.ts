@@ -8,7 +8,10 @@ export class UsersService {
   }
 
   async create(data: any) {
-    const user = Usuario.create({ ...data });
+    let user = Usuario.create({ ...data });
+
+    user.data_criacao = new Date();
+
     return await user.save();
   }
 
