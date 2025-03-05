@@ -1,14 +1,13 @@
-import { Controller, Get, Render } from '@nestjs/common';
-import { ServidorService } from './app.service';
+import { Controller, Get, Render, Res } from '@nestjs/common';
 
 @Controller()
 export class AppController {
-  constructor(private readonly service: ServidorService) {}
+  constructor() {}
 
   @Get('/')
   @Render('home')
-  home() {
-    return { servidores: this.service.getAll() };
+  redirect(@Res() res) {
+    return res.redirect('/users');
   }
 
   @Get('/cadastrar_usuario')
