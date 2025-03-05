@@ -65,7 +65,7 @@
               </span>
             </td>
             <td>
-              <a href="/upload-s3-log/backup/{{this.id_backup}}" class="action-link">
+              <a href="/backups/backup/{{this.id_backup}}" class="action-link">
                 <svg width="8" height="13" viewBox="0 0 8 13" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path
                     d="M-3.91006e-05 1.09L1.06096 0.0300007L6.83996 5.807C6.93312 5.89957 7.00704 6.00964 7.05749 6.13089C7.10794 6.25214 7.13391 6.38217 7.13391 6.5135C7.13391 6.64483 7.10794 6.77486 7.05749 6.89611C7.00704 7.01736 6.93312 7.12743 6.83996 7.22L1.06096 13L0.000960827 11.94L5.42496 6.515L-3.91006e-05 1.09Z"
@@ -82,7 +82,18 @@
   </div>
 </div>
 
+
 <style>
+  .page-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+
   .content-card {
     background-color: white;
     border-radius: var(--border-radius);

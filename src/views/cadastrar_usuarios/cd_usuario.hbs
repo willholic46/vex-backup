@@ -1,175 +1,230 @@
 {{#> main}}
 {{#*inline "content"}}
 
+<div class="page-container">
+  <div class="content-card">
+    <h2 class="form-title">Cadastrar um novo usuário</h2>
+
+    <form action="/users/create" method="POST" class="form">
+      <div class="form-row">
+        <div class="form-group">
+          <label for="login">Login</label>
+          <input type="text" name="login" id="login" class="form-control" required>
+        </div>
+
+        <div class="form-group">
+          <label for="senha">Senha</label>
+          <div class="password-input-container">
+            <input type="password" name="senha" id="senha" class="form-control" required>
+            <button type="button" class="toggle-password">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round" />
+                <circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                  stroke-linejoin="round" />
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="senha_confirma">Repetir senha</label>
+          <div class="password-input-container">
+            <input type="password" name="senha_confirma" id="senha_confirma" class="form-control" required>
+            <button type="button" class="toggle-password">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round" />
+                <circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                  stroke-linejoin="round" />
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <p class="form-info-text">A data de cadastro será atribuída automaticamente pela sistema.</p>
+
+      <div class="form-actions">
+        <a href="/users" class="btn btn-secondary">Cancelar</a>
+        <button type="submit" class="btn btn-primary">Salvar</button>
+      </div>
+    </form>
+  </div>
+</div>
+
 <style>
-  .geral {
+  .page-container {
+    max-width: 900px;
+    margin: 50px auto;
+    padding: 0 20px;
+  }
+
+  .content-card {
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    padding: 32px;
+  }
+
+  .form-title {
+    font-size: 24px;
+    font-weight: 600;
+    color: #333;
+    margin: 0 0 32px 0;
+  }
+
+  .form {
     width: 100%;
   }
 
-  .area_form {
-    background-color: #F6F8FA;
-    width: 800px;
-    overflow: hidden;
-    padding: 20px;
-  }
-
-  .cabecalho_area_form {
-    margin-top: 60px;
-    margin-left: 30px;
-  }
-
-  .area_inputs_geral {
-    height: 320px;
-
-    margin-left: 30px;
-    margin-right: 30px;
-
+  .form-row {
     display: flex;
-    justify-content: space-between;
     flex-wrap: wrap;
+    margin: 0 -12px 20px -12px;
   }
 
-  .area_inputs {
-    width: 50%;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  .form-group {
+    flex: 1 0 calc(50% - 24px);
+    margin: 0 12px 20px 12px;
+    min-width: 250px;
   }
 
-  .area_inputs p {
-    color: #2C2D2F;
-    margin: 0 0 5px 0;
-    font-size: 19px;
+  .form-group label {
+    display: block;
+    font-weight: 500;
+    color: #333;
+    margin-bottom: 8px;
   }
 
-  .area_inputs input {
-    border-radius: 8px;
-    border: 1px #FFFFFF solid;
-    width: 300px;
-    height: 30px;
-  }
-
-  .msg {
+  .form-control {
     width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    font-size: 14px;
+    transition: border-color 0.2s;
+  }
 
-    margin-top: 20px;
+  .form-control:focus {
+    outline: none;
+    border-color: var(--primary-color);
+  }
 
+  .password-input-container {
+    position: relative;
     display: flex;
-    justify-content: center;
     align-items: center;
   }
 
-  .msg p {
-    font-size: 22px;
-    color: #375D54;
-  }
-
-  .area_line {
+  .toggle-password {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #6c757d;
+    padding: 0;
     display: flex;
-    justify-content: center;
     align-items: center;
-    margin-top: 20px;
-    margin-bottom: 20px;
+    justify-content: center;
   }
 
-  .line {
-    width: 680px;
-    border-bottom: solid 1px #6F7382;
+  .toggle-password:hover {
+    color: #333;
   }
 
-  .area_buttons {
-    width: 100%;
+  .form-info-text {
+    font-size: 14px;
+    color: #6c757d;
+    margin: 8px 0 24px 0;
+    border-top: 1px solid #dee2e6;
+    padding-top: 16px;
+  }
 
-    margin-top: 10px;
-
+  .form-actions {
     display: flex;
-    justify-content: center;
-    align-items: center;
+    justify-content: flex-end;
+    gap: 12px;
+    margin-top: 16px;
   }
 
-  .cancel button {
-    border-radius: 8px;
-    width: 160px;
-    height: 50px;
-
-    font-size: 15px;
-    margin-right: 100px;
+  .btn {
+    display: inline-block;
+    padding: 10px 20px;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    border: none;
+    font-size: 14px;
   }
 
-  .save button {
-    border-radius: 8px;
-    width: 160px;
-    height: 50px;
-    font-size: 15px;
+  .btn-primary {
+    background-color: #292929;
+    color: white;
+  }
 
-    background-color: #2C2D2F;
-    color: #FFFFFF;
+  .btn-primary:hover {
+    background-color: #404040;
+  }
+
+  .btn-secondary {
+    background-color: #f8f9fa;
+    color: #333;
+    border: 1px solid #dee2e6;
+  }
+
+  .btn-secondary:hover {
+    background-color: #f1f3f5;
   }
 </style>
 
-<div class="body">
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const senhaInput = document.getElementById('senha');
+    const senhaConfirmaInput = document.getElementById('senha_confirma');
+    const form = document.querySelector('.form');
+    const toggleButtons = document.querySelectorAll('.toggle-password');
 
-  <div class="cabecalho">
-    <h1>Cadastro</h1>
-    <span>Adicione um novo usuário ao sistema</span>
-  </div>
+    // Validação de senha
+    form.addEventListener('submit', function (e) {
+      if (senhaInput.value !== senhaConfirmaInput.value) {
+        e.preventDefault();
+        alert('As senhas não coincidem. Por favor, verifique.');
+      }
+    });
 
+    // Mostrar/ocultar senha
+    toggleButtons.forEach(button => {
+      button.addEventListener('click', function () {
+        const input = this.parentElement.querySelector('input');
+        if (input.type === 'password') {
+          input.type = 'text';
+          this.innerHTML = `
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M17.94 17.94A10.07 10.07 0 0112 20c-7 0-11-8-11-8a18.45 18.45 0 015.06-5.94M9.9 4.24A9.12 9.12 0 0112 4c7 0 11 8 11 8a18.5 18.5 0 01-2.16 3.19m-6.72-1.07a3 3 0 11-4.24-4.24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <line x1="1" y1="1" x2="23" y2="23" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          `;
+        } else {
+          input.type = 'password';
+          this.innerHTML = `
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+              <circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          `;
+        }
+      });
+    });
+  });
+</script>
 
-  <form action="/users/create" method="POST" class="area_form">
-    <div class="cabecalho_area_form">
-      <h2>Cadastrar um novo usuário</h2>
-    </div>
-
-    <div class="area_inputs_geral">
-
-      <div class="area_inputs">
-        <div class="input_content">
-          <p>Login</p>
-          <input type="text" name="login" id="login">
-        </div>
-      </div>
-
-      <div class="area_inputs">
-        <div class="input_content">
-          <p>Senha</p>
-          <input type="text" name="senha" id="senha">
-        </div>
-      </div>
-
-      <div class="area_inputs">
-        <div class="input_content">
-          <p>Repetir senha</p>
-          <input type="text">
-        </div>
-      </div>
-
-      {{!-- <div class="area_inputs">
-        <div class="input_content">
-          <p>Permissão de acesso</p>
-          <select style="width: 300px; height: 30px; border-radius: 4px; border: 1px #FFFFFF solid;" name="privilegio"
-            id="privilegio">
-            <option value="Administrador">Administrador</option>
-            <option value="Usuario">Usuário</option>
-          </select>
-        </div>
-      </div> --}}
-
-      <div class="area_line">
-        <div class="line"></div>
-      </div>
-
-      <div class="area_buttons">
-        <div class="cancel">
-          <button type="button" onclick="window.location.href='/users'">Cancelar</button>
-        </div>
-
-        <div class="save">
-          <button type="submit">Salvar</button>
-        </div>
-      </div>
-    </div>
-  </form>
-
-  {{/inline}}
-  {{/main}}
+{{/inline}}
+{{/main}}

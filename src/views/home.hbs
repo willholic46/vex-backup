@@ -1,58 +1,227 @@
 {{#> main}}
 {{#*inline "content"}}
 
-<div class="body">
-  <div class="cabecalho">
+<div class="page-container">
+  <div class="page-header">
     <h1>Usuários</h1>
-    <span>Crie, gerencie e altere as credenciais de acesso ao sistema.</span>
+    <p class="page-description">Crie, gerencie e altere as credenciais de acesso ao sistema.</p>
   </div>
 
-  <div class="container_table">
-
-    <div class="menu_table">
-
-      <div class="count_registers">
-        <p>Todos</p>
-        <label id="recordCount">X</label>
+  <div class="content-card">
+    <div class="card-header">
+      <div class="count-records">
+        <span class="count-label">Todos</span>
+        <span class="count-number" id="recordCount">{{users.length}}</span>
       </div>
 
-      <div class="label_search">
-        <img src="images/icon_search.svg" alt="icon_search">
-
-        <input type="text" id="filter" placeholder="Buscar...">
+      <div class="search-container">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path
+            d="M11 19C15.4183 19 19 15.4183 19 11C19 6.58172 15.4183 3 11 3C6.58172 3 3 6.58172 3 11C3 15.4183 6.58172 19 11 19Z"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+          <path d="M21 21L16.65 16.65" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+            stroke-linejoin="round" />
+        </svg>
+        <input type="text" id="filter" placeholder="Pesquisar...">
       </div>
 
-      <a href="/cadastrar_usuario" class="botomn_register">
-        <button class="botomn_register">Cadastrar</button>
-      </a>
+      <div class="card-actions">
+        <a href="/users/create" class="btn btn-primary">Cadastrar Usuário</a>
+      </div>
     </div>
 
-    <div class="area_listing_table">
-      <table class="listing_table">
-        <thead class="thead_listing_table">
+    <div class="table-responsive">
+      <table class="data-table">
+        <thead>
           <tr>
             <th>Login</th>
             <th>Senha</th>
             <th>Data de criação</th>
+            <th width="80">Ações</th>
           </tr>
         </thead>
-
-        <tbody class="tbody_listing_table">
-
+        <tbody>
           {{#each users}}
-
           <tr>
             <td>{{this.login}}</td>
-            <td>{{this.senha}}</td>
+            <td>******</td>
             <td>{{this.data_criacao}}</td>
+            <td>
+              <a href="/users/edit/{{this.id}}" class="action-link" title="Editar">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round" />
+                  <path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+              </a>
+            </td>
           </tr>
-
           {{/each}}
         </tbody>
       </table>
     </div>
   </div>
 </div>
+
+<style>
+  .page-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  .content-card {
+    background-color: white;
+    border-radius: var(--border-radius);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    margin-bottom: 30px;
+  }
+
+  .card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px 20px;
+    border-bottom: 1px solid var(--light-gray);
+  }
+
+  .count-records {
+    display: flex;
+    align-items: center;
+  }
+
+  .count-label {
+    font-weight: 500;
+    color: var(--dark-gray);
+    margin-right: 8px;
+  }
+
+  .count-number {
+    background-color: var(--light-gray);
+    color: var(--dark-gray);
+    padding: 2px 8px;
+    border-radius: 12px;
+    font-size: 14px;
+    font-weight: 500;
+  }
+
+  .search-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+
+  .search-container svg {
+    position: absolute;
+    left: 10px;
+    color: var(--dark-gray);
+  }
+
+  .search-container input {
+    padding: 8px 10px 8px 35px;
+    border: 1px solid var(--medium-gray);
+    border-radius: var(--border-radius);
+    font-size: 14px;
+    width: 250px;
+  }
+
+  .search-container input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+  }
+
+  .btn-primary {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s;
+  }
+
+  .btn-primary:hover {
+    background-color: #333;
+  }
+
+  .table-responsive {
+    overflow-x: auto;
+  }
+
+  .data-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  .data-table thead tr {
+    background-color: var(--light-gray);
+  }
+
+  .data-table th {
+    padding: 12px 15px;
+    text-align: left;
+    font-weight: 600;
+    color: var(--dark-gray);
+    border-bottom: 1px solid var(--medium-gray);
+  }
+
+  .data-table td {
+    padding: 12px 15px;
+    border-bottom: 1px solid var(--light-gray);
+  }
+
+  .data-table tbody tr:hover {
+    background-color: rgba(0, 0, 0, 0.02);
+  }
+
+  .action-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 6px;
+    border-radius: 4px;
+    background-color: var(--light-gray);
+    color: var(--dark-gray);
+    text-decoration: none;
+    transition: all 0.2s;
+  }
+
+  .action-link:hover {
+    background-color: var(--medium-gray);
+    color: var(--primary-color);
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const filterInput = document.getElementById('filter');
+    const tableRows = document.querySelectorAll('.data-table tbody tr');
+    const recordCount = document.getElementById('recordCount');
+
+    filterInput.addEventListener('keyup', function () {
+      const searchTerm = filterInput.value.toLowerCase();
+      let visibleRows = 0;
+
+      tableRows.forEach(row => {
+        const rowText = row.textContent.toLowerCase();
+        if (rowText.includes(searchTerm)) {
+          row.style.display = '';
+          visibleRows++;
+        } else {
+          row.style.display = 'none';
+        }
+      });
+
+      recordCount.textContent = visibleRows;
+    });
+  });
+</script>
 
 {{/inline}}
 {{/main}}

@@ -7,9 +7,6 @@ export class UploadS3LogService {
   async getAll() {
     return await UploadS3Log.find({
       relations: ['backup'],
-      order: {
-        id: 'DESC',
-      },
     });
   }
 

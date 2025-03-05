@@ -30,15 +30,12 @@ export class UserController {
 
   @Post('/create')
   async createUsuario(@Body() usuario, @Res() res: Response) {
-    console.log(usuario);
-
-    await this.usersService
-      .create(usuario)
-      .then(() => {
-        return res.redirect('/users');
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    try {
+      await this.usersService.create(usuario);
+      return res.redirect('/users');
+    } catch (err) {
+      console.error('Erro ao criar usuário:', err);
+      return res.redirect('/users/create?error=true');
+    }
   }
 }
